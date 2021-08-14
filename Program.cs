@@ -6,23 +6,57 @@ namespace VitroCalc
     {
         static void Main()
         {
-            double largura, altura, comprimentoMadeira, areaVidro;
-                string larguraString, alturaString;
+            float largura, comprimento, comprimentoMadeira, areaEnvidracada;
 
-                Console.WriteLine("Digite a largura da janela em metros:\a");
-                larguraString = Console.ReadLine();
-                largura = double.Parse(larguraString);
+            const float larguraMax = 5.0f;
+            const float larguraMin = 0.5f;
+            const float comprimentoMax = 3.0f;
+            const float comprimentoMin = 0.75f;
 
-                Console.WriteLine("Digite a altura da janela em metros:\a");
-                alturaString = Console.ReadLine();
-                altura = double.Parse(alturaString);
+            string larguraString, comprimentoString;
 
-                comprimentoMadeira = 2 * (largura + altura) * 3.25;
+            Console.Write("Forneça a largura da janela: ");
+            larguraString = Console.ReadLine();
+            largura = float.Parse(larguraString);
 
-                areaVidro = 2 * (largura * altura);
+            if (largura < larguraMin)
+            {
+                Console.WriteLine("Largura é muito pequena.\n\n ");
+                Console.WriteLine("Usando o mínimo");
+                largura = larguraMin;
+            }
 
-                Console.WriteLine($"O comprimento da madeira é { comprimentoMadeira }.\n"
-                                + $"A área envidraçada é { areaVidro } pés quadrados");
+            if (largura > larguraMax)
+            {
+                Console.WriteLine("Largura é muito grande.\n\n");
+                Console.WriteLine("Usando o máximo");
+                largura = larguraMax;
+            }
+
+            Console.Write("Forneça o comprimento da janela: ");
+            comprimentoString = Console.ReadLine();
+            comprimento = float.Parse(comprimentoString);
+
+            if (comprimento < comprimentoMin)
+            {
+                Console.WriteLine("O comprimento é muito pequeno.\n\n");
+                Console.WriteLine("Usando o mínimo");
+                comprimento = comprimentoMin;
+            }
+
+            if (comprimento > comprimentoMax)
+            {
+                Console.WriteLine("O comprimento é muito grande.\n\n");
+                Console.WriteLine("Usando o máximo");
+                comprimento = comprimentoMax;
+            }
+
+            comprimentoMadeira = (2.0f * (largura + comprimento) * 3.25f);
+
+            areaEnvidracada = 2 * (largura * comprimento);
+
+            Console.WriteLine($"O comprimento da madeira é { comprimentoMadeira } pés");
+            Console.WriteLine($"A área envidraçada é { areaEnvidracada } metros quadrados");
         }
     }
 }
